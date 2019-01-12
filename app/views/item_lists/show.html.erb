@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item_list.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item_list.description %>
+</p>
+
+<p>
+  <strong>Expected cost:</strong>
+  <%= @item_list.expected_cost %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @item_list.image_url(:thumb) %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @item_list.contact %>
+</p>
+
+<%  if @item_list.user_id == current_user.id %>
+<%= link_to 'Edit', edit_item_list_path(@item_list) %> |
+  <% end %>
+<%= link_to 'Back', item_lists_path %>

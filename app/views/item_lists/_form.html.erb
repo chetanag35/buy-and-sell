@@ -1,0 +1,47 @@
+<%= form_with(model: @item_list, local: true) do |form| %>
+  <% if @item_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_list.errors.count, "error") %> prohibited this item_list from being saved:</h2>
+
+      <ul>
+      <% @item_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expected_cost %>
+    <%= form.number_field :expected_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <% if form.object.image? %>
+      <%= image_tag form.object.image_url(:thumb) %>
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact %>
+    <%= form.text_area :contact %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
